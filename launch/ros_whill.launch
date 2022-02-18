@@ -8,7 +8,7 @@
         <remap from="/joint_states" to="/whill/states/jointState" />
     </node>
 
-    <arg name="serialport" default="$(env TTY_WHILL)"/>
+    <arg name="serialport" default="/dev/ttyWHILL"/>
 
     <node pkg="ros_whill" type="ros_whill" name="whill" output="screen" >
 
@@ -31,6 +31,8 @@
     <include file="$(find livox_ros_driver)/launch/livox_hub.launch">
         <arg name="multi_topic" value="1"/>
         <arg name="xfer_format" value="1"/>
+    </include>
+    <include file="$(find ros_whill)/launch/include/multi_undistort.launch">
     </include>
     <rosparam file="$(find hikrobot_camera)/config/camera.yaml" command="load"/>
     <node pkg="hikrobot_camera" type="hikrobot_camera" name="hikrobot_camera" respawn="true" output="screen" /> 

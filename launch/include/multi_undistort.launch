@@ -1,0 +1,22 @@
+<launch>
+    <include file="$(find ros_whill)/launch/include/livolivox_undistort.launch">
+            <arg name="id" value="1HDDGC500103141"/>
+            <arg name="out" value="front_left"/>
+    </include>
+    <include file="$(find ros_whill)/launch/include/livolivox_undistort.launch">
+            <arg name="id" value="3WEDH5900101671"/>
+            <arg name="out" value="front_right"/>
+    </include>
+    <include file="$(find ros_whill)/launch/include/livolivox_undistort.launch">
+            <arg name="id" value="3WEDH5900101871"/>
+            <arg name="out" value="rear_right"/>
+    </include>
+    <include file="$(find ros_whill)/launch/include/livolivox_undistort.launch">
+            <arg name="id" value="3WEDH5900102571"/>
+            <arg name="out" value="front"/>
+    </include>
+    <include file="$(find ros_whill)/launch/include/livolivox_undistort.launch">
+            <arg name="id" value="3WEDH5900103041"/>
+            <arg name="out" value="rear_left"/>
+    </include>
+</launch>
