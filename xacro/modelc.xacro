@@ -196,7 +196,7 @@
     <joint name="imu_joint" type="fixed">
         <axis xyz="0 1 0" />
         <origin xyz="0.1 0 0.34" rpy="0 0 0"/>
-        <parent link="base_link"/>
+        <parent link="base_floor"/>
         <child link="imu"/>
     </joint>
 
@@ -207,7 +207,7 @@
     <joint name="livox_joint" type="fixed">
         <axis xyz="0 1 0" />
         <origin xyz="0.2 0.0 0.175" rpy="0 0 0"/>
-        <parent link="base_link"/>
+        <parent link="base_floor"/>
         <child link="livox_frame"/>
     </joint>
 
@@ -218,7 +218,7 @@
     <joint name="camera_joint" type="fixed">
         <axis xyz="0 1 0" />
         <origin xyz="0.3 0.0 0.35" rpy="0 0 0"/>
-        <parent link="base_link"/>
+        <parent link="base_floor"/>
         <child link="hikrobot_camera"/>
     </joint>
 
