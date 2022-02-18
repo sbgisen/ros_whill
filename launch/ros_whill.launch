@@ -28,5 +28,12 @@
         <param name="publish_tf" value="true"/>  
         
     </node>
+    <include file="$(find livox_ros_driver)/launch/livox_hub.launch">
+        <arg name="multi_topic" value="1"/>
+        <arg name="xfer_format" value="1"/>
+    </include>
+    <rosparam file="$(find hikrobot_camera)/config/camera.yaml" command="load"/>
+    <node pkg="hikrobot_camera" type="hikrobot_camera" name="hikrobot_camera" respawn="true" output="screen" /> 
+    <node name="imu_node" pkg="openzen_sensor" type="openzen_sensor_node" respawn="false" output="screen"/>
 </launch>
 
