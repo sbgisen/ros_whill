@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- -*- mode: XML -*- -->
+<launch>
+  <arg name="serialport" default="$(env TTY_WHILL)"/>
+  <include file="$(find ros_whill)/launch/include/ros_whill.launch">
+    <arg name="serialport" value="$(arg serialport)"/>
+  </include>
+  <include file="$(find ros_whill)/launch/include/livox_mid360.launch">
+  </include>
+</launch>
