@@ -2,3 +2,7 @@
     uri: git@github.com:MikhailBertrand/livox_ros_driver2
     local-name: livox_ros_driver2
     version: mikhail_main
+- git:
+    uri: git@github.com:sbgisen/car-maneuver-recovery.git
+    local-name: car_maneuver_recovery
+    version: melodic-devel
