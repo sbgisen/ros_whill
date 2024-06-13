@@ -2,8 +2,8 @@
 <!-- -*- mode: XML -*- -->
 <launch>
   <arg name="scan_topic" default="/livox/laser"/>
-  <arg name="cmd_vel_topic" default="/cmd_vel"/>
-  <arg name="odom_topic" default="/odom"/>
+  <arg name="cmd_vel_topic" default="/whill/controller/cmd_vel"/>
+  <arg name="odom_topic" default="/whill/odom"/>
   <arg name="map_file"/>
   <arg name="map_keepout_file" default=""/>
   <arg name="use_keepout" default="true"/>
