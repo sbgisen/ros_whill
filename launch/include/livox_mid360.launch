@@ -4,13 +4,10 @@
   <arg name="config_file" default="$(find ros_whill)/config/sensors/whill_mid360.json"/>
   <include file="$(find livox_ros_driver2)/launch_ROS1/msg_MID360.launch">
     <arg name="user_config_path" value="$(arg config_file)"/>
-    <arg name="xfer_format" value="1"/>
-    <!-- Set to 0 to show PointCloud2 type msg. -->
+    <arg name="xfer_format" value="0"/>
   </include>
-  <node pkg="livox_dedistortion_pkg" type="livox_repub_node" name="livox_repub_node_$(arg out)"/>
-  <node pkg="livox_dedistortion_pkg" type="deskew_node" name="deskew_node_$(arg out)"/>
   <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan_node" args="load livox_laserscan/LaserScanNodelet livox_nodelet_manager">
-    <remap from="cloud_in" to="/livox/lidar_pc2"/>
+    <remap from="cloud_in" to="/livox/lidar"/>
     <remap from="scan" to="/livox/lidar_laser"/>
     <!-- <param name="min_height" value=""/> -->
     <!-- <param name="max_height" value=""/> -->
