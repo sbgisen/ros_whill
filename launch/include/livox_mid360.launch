@@ -8,8 +8,8 @@
   </include>
   <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan_node" args="load livox_laserscan/LaserScanNodelet livox_nodelet_manager">
     <remap from="cloud_in" to="/livox/lidar"/>
-    <remap from="scan" to="/livox/lidar_laser"/>
-    <!-- <param name="min_height" value=""/> -->
-    <!-- <param name="max_height" value=""/> -->
+    <remap from="scan" to="/livox/laser"/>
+    <param name="min_height" value="-0.1"/>
+    <param name="max_height" value="0.1"/>
   </node>
 </launch>
