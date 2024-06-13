@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- -*- mode: XML -*- -->
+<launch>
+  <arg name="config_file" default="$(find ros_whill)/config/sensors/whill_mid360.json"/>
+  <include file="$(find livox_ros_driver2)/launch_ROS1/msg_MID360.launch">
+    <arg name="user_config_path" value="$(arg config_file)"/>
+    <arg name="xfer_format" value="1"/>
+    <!-- Set to 0 to show PointCloud2 type msg. -->
+  </include>
+  <node pkg="livox_dedistortion_pkg" type="livox_repub_node" name="livox_repub_node_$(arg out)"/>
+  <node pkg="livox_dedistortion_pkg" type="deskew_node" name="deskew_node_$(arg out)"/>
+</launch>
