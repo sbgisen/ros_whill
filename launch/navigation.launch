@@ -28,7 +28,7 @@
     <param name="initial_pose_x" value="$(arg initial_pose_x)"/>
     <param name="initial_pose_y" value="$(arg initial_pose_y)"/>
     <param name="initial_pose_a" value="$(arg initial_pose_a)"/>
-    <rosparam file="$(find ros_whill)/config/localization/amcl.yaml" command="load"/>
+    <rosparam file="$(find ros_whill)/config/navigation/amcl.yaml" command="load"/>
   </node>
   <!-- costmap convert to image node -->
   <group if="$(arg costmap_image)">
@@ -50,7 +50,7 @@
     <!-- <param name="SBPLLatticePlanner/primitive_filename" value="$(find ros_whill)/mprim/unicycle_highcost_5cm.mprim"/> -->
     <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
     <remap from="odom" to="$(arg odom_topic)"/>
-    <remap from="map" to="$(arg map_topic)"/>
+    <remap from="map" to="/map"/>
   </node>
   <!-- <node name="rotate_in_place" pkg="ros_whill" type="rotate_in_place_vel.py" respawn="false" output="screen" launch-prefix="nice -n 19">
     <param name="rotate_begin_threshold" value="1.4"/>
