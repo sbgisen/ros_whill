@@ -1,7 +1,7 @@
 - git:
-    uri: git@github.com:ziv-lin/livox_ros_driver_for_R2LIVE.git
-    local-name: livox_ros_driver
-    version: main
+    uri: git@github.com:MikhailBertrand/livox_ros_driver2
+    local-name: livox_ros_driver2
+    version: mikhail_main
 - git:
     uri: git@github.com:sbgisen/livox_cloud_undistortion.git
     local-name: livox_cloud_undistortion
