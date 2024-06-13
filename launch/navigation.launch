@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- -*- mode: XML -*- -->
+<launch>
+  <arg name="scan_topic" default="/livox/laser"/>
+  <arg name="cmd_vel_topic" default="/cmd_vel"/>
+  <arg name="odom_topic" default="/odom"/>
+  <arg name="map_file"/>
+  <arg name="map_keepout_file" default=""/>
+  <arg name="use_keepout" default="true"/>
+  <arg name="initial_pose_x" default="0.0"/>
+  <arg name="initial_pose_y" default="0.0"/>
+  <arg name="initial_pose_a" default="0.0"/>
+  <arg name="local_planner" default="base" doc="base(Trajectory), dwa, eband or teb"/>
+  <arg name="global_planner" default="navfn" doc="navfn, global or sbpl_lattice"/>
+  <arg name="costmap_image" default="false"/>
+  <!-- Map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+  <group if="$(arg use_keepout)">
+    <node name="map_keepout_server" pkg="map_server" type="map_server" args="$(arg map_keepout_file)">
+      <remap from="map" to="map_keepout"/>
+      <remap from="static_map" to="static_map_keepout"/>
+    </node>
+  </group>
+  <!-- AMCL (localization) -->
+  <node pkg="amcl" type="amcl" name="amcl" required="true" launch-prefix="nice -n 19">
+    <remap from="scan" to="$(arg scan_topic)"/>
+    <param name="use_map_topic" value="false"/>
+    <param name="initial_pose_x" value="$(arg initial_pose_x)"/>
+    <param name="initial_pose_y" value="$(arg initial_pose_y)"/>
+    <param name="initial_pose_a" value="$(arg initial_pose_a)"/>
+    <rosparam file="$(find ros_whill)/config/localization/amcl.yaml" command="load"/>
+  </node>
+  <!-- costmap convert to image node -->
+  <group if="$(arg costmap_image)">
+    <param name="costmap_image/full/compressed/format" value="png"/>
+    <node name="costmap_to_image" pkg="hector_compressed_map_transport" type="costmap_to_image_node" output="screen" launch-prefix="nice -n 19">
+      <remap from="pose" to="robot_pose"/>
+    </node>
+  </group>
+  <!-- Move Base -->
+  <node pkg="move_base" type="move_base" name="move_base" respawn="true" output="screen" launch-prefix="nice -n 18">
+    <!-- Parameters common among all robots -->
+    <rosparam file="$(find ros_whill)/config/navigation/costmap_common.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(find ros_whill)/config/navigation/costmap_local.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(find ros_whill)/config/navigation/costmap_common.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find ros_whill)/config/navigation/costmap_global.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find ros_whill)/config/navigation/move_base.yaml" command="load"/>
+    <rosparam file="$(find ros_whill)/config/navigation/$(arg global_planner)_global_planner.yaml" command="load"/>
+    <rosparam subst_value="true" file="$(find ros_whill)/config/navigation/$(arg local_planner)_local_planner.yaml" command="load"/>
+    <!-- <param name="SBPLLatticePlanner/primitive_filename" value="$(find ros_whill)/mprim/unicycle_highcost_5cm.mprim"/> -->
+    <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+    <remap from="odom" to="$(arg odom_topic)"/>
+    <remap from="map" to="$(arg map_topic)"/>
+  </node>
+  <!-- <node name="rotate_in_place" pkg="ros_whill" type="rotate_in_place_vel.py" respawn="false" output="screen" launch-prefix="nice -n 19">
+    <param name="rotate_begin_threshold" value="1.4"/>
+  </node> -->
+</launch>

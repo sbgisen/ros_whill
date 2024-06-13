@@ -1,0 +1,41 @@
+base_local_planner: "base_local_planner/TrajectoryPlannerROS"
+TrajectoryPlannerROS:
+  # tolerances (defaults)
+  dwa: false
+  # other
+  oscillation_reset_dist: 0.05
+  # debug
+  publish_cost_grid_pc: false
+  # Base profile for cuboid
+  acc_lim_x: 0.05 # 直線加速度
+  acc_lim_y: 0.0
+  acc_lim_theta: 0.8 # 回転加速
+  max_vel_x: 0.3
+  min_vel_x: 0.00
+  max_vel_y: 0.0
+  min_vel_y: 0.0
+  max_vel_theta: 1.0
+  min_vel_theta: -1.0
+  min_in_place_vel_theta: 0.3
+  sim_time: 2.0
+  sim_granularity: 0.025
+  angular_sim_granularity: 0.0125
+
+  path_distance_bias: 1.0
+  goal_distance_bias: 2.0 # 1.2 #0.4 #6.0
+  occdist_scale: 0.1 # 0.06 #0.6
+  heading_scoring: false
+  heading_lookahead: 1.0
+  heading_scoring_timestep: 0.8
+
+  vx_samples: 10
+  vtheta_samples: 10
+  escape_reset_dist: 0.05
+  escape_reset_theta: 0.025
+  escape_vel: -0.05 # -0.03
+  escape_vel_theta: -0.1 # 0.1
+  escape_backward_only: true
+  holonomic_robot: false
+  yaw_goal_tolerance: 0.05
+  xy_goal_tolerance: 0.1
+  latch_xy_goal_tolerance: true

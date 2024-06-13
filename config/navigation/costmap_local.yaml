@@ -1,0 +1,18 @@
+global_frame: odom
+
+rolling_window: true
+publish_frequency: 10.0
+update_frequency: 10.0
+
+width: 3.0
+height: 3.0
+resolution: 0.025
+inflater:
+  # robot_radius: 0.26
+  cost_scaling_factor: 5.0
+  inflation_radius: 1.0
+plugins:
+  - name: laser_obstacles
+    type: "costmap_2d::ObstacleLayer"
+  - name: inflater
+    type: "costmap_2d::InflationLayer"
