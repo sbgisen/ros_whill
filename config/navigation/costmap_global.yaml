@@ -4,8 +4,6 @@ update_frequency: 1
 publish_frequency: 1
 resolution: 0.1
 inflater:
-  # footprint: [[-0.18, 0.18], [0.18, 0.18], [0.18, -0.18], [-0.18, -0.18]] # for CUBE
-  # robot_radius: 0.26
   cost_scaling_factor: 10.0
   inflation_radius: 1.0
   inflate_unknown: true
