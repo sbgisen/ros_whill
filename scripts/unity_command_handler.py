@@ -77,7 +77,7 @@ class UnityCommandHandler:
         self.__goal.target_pose.header.stamp = rospy.Time.now()
         self.__goal.target_pose.pose = self.__pose_dict[data.data]
         self.__move_base_client.send_goal(self.__goal)
-        result = self.__move_client.wait_for_result()
+        result = self.__move_base_client.wait_for_result()
         if not result:
             rospy.logerr('Failed to reach goal')
             return
