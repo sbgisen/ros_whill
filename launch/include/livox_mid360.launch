@@ -12,4 +12,9 @@
     <param name="min_height" value="-0.1"/>
     <param name="max_height" value="0.1"/>
   </node>
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_filter">
+    <rosparam command="load" file="$(find ros_whill)/config/sensors/scan_filter.yaml"/>
+    <remap from="scan" to="/livox/laser"/>
+    <remap from="scan_filtered" to="/livox/laser_filtered"/>
+  </node>
 </launch>
