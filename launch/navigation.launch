@@ -52,7 +52,9 @@
     <remap from="odom" to="$(arg odom_topic)"/>
     <remap from="map" to="/map"/>
   </node>
-  <!-- <node name="rotate_in_place" pkg="ros_whill" type="rotate_in_place_vel.py" respawn="false" output="screen" launch-prefix="nice -n 19">
-    <param name="rotate_begin_threshold" value="1.4"/>
-  </node> -->
+  <node pkg="robot_pose_publisher" type="robot_pose_publisher" name="robot_pose_publisher" launch-prefix="nice -n 19">
+    <param name="map_frame" value="map"/>
+    <param name="base_frame" value="base_link"/>
+    <param name="is_stamped" value="true"/>
+  </node>
 </launch>

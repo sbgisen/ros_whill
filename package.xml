@@ -28,6 +28,7 @@
   <exec_depend>clear_costmap_recovery</exec_depend>
   <exec_depend>rotate_recovery</exec_depend>
   <exec_depend>ros_tcp_endpoint</exec_depend>
+  <exec_depend>robot_pose_publisher</exec_depend>
   <export>
   </export>
 </package>

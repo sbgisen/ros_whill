@@ -10,3 +10,7 @@
     uri: git@github.com:Unity-Technologies/ROS-TCP-Endpoint
     local-name: ros_tcp_endpoint
     version: main
+- git:
+    uri: git@github.com:GT-RAIL/robot_pose_publisher.git
+    local-name: robot_pose_publisher
+    version: develop
