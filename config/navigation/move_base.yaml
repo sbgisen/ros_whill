@@ -17,18 +17,6 @@ recovery_behavior_enabled: true
 recovery_behaviors:
   - name: "conservative_reset"
     type: "clear_costmap_recovery/ClearCostmapRecovery"
-  - name: "car_maneuver_recovery"
-    type: "car_maneuver_recovery/CarManeuverRecovery"
 conservative_reset:
   layer_names: ["laser_obstacles"]
-  reset_distance: 3.0
-car_maneuver_recovery:
-  four_wheel_steering: True
-  crab_steering: False
-  recovery_speed: 0.1
-  recovery_steering_angle: 0.4
-  wheelbase: 0.1
-  escape_cost_threshold: 200
-  timeout: 5.0
-  display_costs: True
-  extra_footprint_padding: 0.2
+  reset_distance: 5.0

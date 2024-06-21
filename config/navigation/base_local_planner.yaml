@@ -10,8 +10,8 @@ TrajectoryPlannerROS:
   acc_lim_x: 0.05 # 直線加速度
   acc_lim_y: 0.0
   acc_lim_theta: 0.8 # 回転加速
-  max_vel_x: 0.7
-  min_vel_x: 0.00
+  max_vel_x: 1.0
+  min_vel_x: 0.3
   max_vel_y: 0.0
   min_vel_y: 0.0
   max_vel_theta: 1.0

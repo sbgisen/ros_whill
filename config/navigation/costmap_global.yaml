@@ -5,7 +5,7 @@ publish_frequency: 1
 resolution: 0.1
 inflater:
   cost_scaling_factor: 10.0
-  inflation_radius: 1.0
+  inflation_radius: 0.6
   inflate_unknown: true
 plugins:
   - name: static_map
