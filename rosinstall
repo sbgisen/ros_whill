@@ -10,3 +10,7 @@
     uri: git@github.com:GT-RAIL/robot_pose_publisher.git
     local-name: robot_pose_publisher
     version: develop
+- git:
+    uri: git@github.com:yujinrobot/yujin_ocs.git
+    local-name: yujin_ocs
+    version: devel

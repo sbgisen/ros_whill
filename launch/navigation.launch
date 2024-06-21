@@ -50,7 +50,7 @@
     <rosparam file="$(find ros_whill)/config/navigation/$(arg global_planner)_global_planner.yaml" command="load"/>
     <rosparam subst_value="true" file="$(find ros_whill)/config/navigation/$(arg local_planner)_local_planner.yaml" command="load"/>
     <!-- <param name="SBPLLatticePlanner/primitive_filename" value="$(find ros_whill)/mprim/unicycle_highcost_5cm.mprim"/> -->
-    <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+    <remap from="cmd_vel" to="$(arg cmd_vel_topic)_raw"/>
     <remap from="odom" to="$(arg odom_topic)"/>
     <remap from="map" to="/map"/>
   </node>
@@ -62,5 +62,15 @@
   <include file="$(find ros_whill)/launch/include/unity_client.launch">
     <arg name="tcp_ip" value="$(arg unity_ip)"/>
     <arg name="tcp_port" value="$(arg unity_port)"/>
+  </include>
+  <node pkg="nodelet" type="nodelet" name="velocity_smoother_manager" args="manager"/>
+  <include file="$(find yocs_velocity_smoother)/launch/velocity_smoother.launch">
+    <arg name="node_name" value="velocity_smoother"/>
+    <arg name="nodelet_manager_name" value="velocity_smoother_manager"/>
+    <arg name="config_file" value="$(find ros_whill)/config/navigation/velocity_smoother.yaml"/>
+    <arg name="raw_cmd_vel_topic" value="$(arg cmd_vel_topic)_raw"/>
+    <arg name="smooth_cmd_vel_topic" value="$(arg cmd_vel_topic)"/>
+    <arg name="robot_cmd_vel_topic" value="$(arg cmd_vel_topic)"/>
+    <arg name="odom_topic" value="$(arg odom_topic)"/>
   </include>
 </launch>

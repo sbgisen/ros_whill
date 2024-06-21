@@ -28,6 +28,10 @@
   <exec_depend>rotate_recovery</exec_depend>
   <exec_depend>ros_tcp_endpoint</exec_depend>
   <exec_depend>robot_pose_publisher</exec_depend>
+  <exec_depend>yocs_velocity_smoother</exec_depend>
+  <exec_depend>nodelet</exec_depend>
+  <exec_depend>hector_compressed_map_transport</exec_depend>
+  <exec_depend>rviz</exec_depend>
   <export>
   </export>
 </package>
