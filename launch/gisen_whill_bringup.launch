@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- -*- mode: XML -*- -->
 <launch>
-  <arg name="unity_ip" default="192.168.1.12"/>
-  <arg name="unity_port" default="10000"/>
   <arg name="serialport" default="$(env TTY_WHILL)"/>
   <include file="$(find ros_whill)/launch/include/ros_whill.launch">
     <arg name="serialport" value="$(arg serialport)"/>
   </include>
   <include file="$(find ros_whill)/launch/include/livox_mid360.launch">
-  </include>
-  <include file="$(find ros_whill)/launch/include/unity_client.launch">
-    <arg name="tcp_ip" value="$(arg unity_ip)"/>
-    <arg name="tcp_port" value="$(arg unity_port)"/>
   </include>
 </launch>

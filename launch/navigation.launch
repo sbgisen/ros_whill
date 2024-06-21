@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- -*- mode: XML -*- -->
 <launch>
+  <arg name="unity_ip" default="192.168.1.12"/>
+  <arg name="unity_port" default="10000"/>
   <arg name="scan_topic" default="/livox/laser"/>
   <arg name="cmd_vel_topic" default="/whill/controller/cmd_vel"/>
   <arg name="odom_topic" default="/whill/odom"/>
@@ -57,4 +59,8 @@
     <param name="base_frame" value="base_link"/>
     <param name="is_stamped" value="true"/>
   </node>
+  <include file="$(find ros_whill)/launch/include/unity_client.launch">
+    <arg name="tcp_ip" value="$(arg unity_ip)"/>
+    <arg name="tcp_port" value="$(arg unity_port)"/>
+  </include>
 </launch>
