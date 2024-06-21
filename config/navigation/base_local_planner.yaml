@@ -36,6 +36,6 @@ TrajectoryPlannerROS:
   escape_vel_theta: -0.1 # 0.1
   escape_backward_only: true
   holonomic_robot: false
-  yaw_goal_tolerance: 0.05
-  xy_goal_tolerance: 0.1
+  yaw_goal_tolerance: 0.1
+  xy_goal_tolerance: 1.0
   latch_xy_goal_tolerance: true
