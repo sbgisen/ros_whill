@@ -9,4 +9,7 @@
   </include>
   <node pkg="ros_whill" type="unity_command_handler.py" name="unity_command_handler">
   </node>
+  <node pkg="voicevox_simple" type="voicevox_server.py" name="voicevox_server">
+    <remap from="~voicevox_cmd" to="unity_speech_cmd"/>
+  </node>
 </launch>
